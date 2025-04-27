@@ -1,0 +1,41 @@
+<!--home-->
+{% extends 'base.html' %}
+
+{% block title %}Home - Leave Management System{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Leave Management System</h2>
+    <p>Here, you can apply for leaves, check your leave status, and manage leave types.</p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Apply for Leave</h5>
+                    <p class="card-text">Submit your leave applications here.</p>
+                    <a href="{% url 'apply_leave' %}" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Check Leave Status</h5>
+                    <p class="card-text">View the status of your leave applications.</p>
+                    <a href="{% url 'leave_status' %}" class="btn btn-info">Check Status</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Leave Types</h5>
+                    <p class="card-text">Manage different leave types here.</p>
+                    <a href="{% url 'leave_type' %}" class="btn btn-success">Manage Types</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

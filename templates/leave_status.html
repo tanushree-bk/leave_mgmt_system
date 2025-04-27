@@ -1,0 +1,65 @@
+<!--leave_status.html-->
+{% extends 'base.html' %}
+
+{% block title %}Leave Status - Leave Management{% endblock %}
+
+{% block content %}
+    <h2>Your Leave Status</h2>
+    <hr>
+    <div class="row">
+        {% if applications %}
+            <div class="col-md-12">
+                <h4>Your Leave Applications</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Leave Type</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Reason</th>
+                            <th>Status</th>
+                            <th>Duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for application in applications %}
+                            <tr>
+                                <td>{{ application.leave_type.name }}</td>
+                                <td>{{ application.start_date }}</td>
+                                <td>{{ application.end_date }}</td>
+                                <td>{{ application.reason }}</td>
+                                <td>{{ application.status }}</td>
+                                <td>{{ application.duration }} days</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p>You have no leave applications.</p>
+        {% endif %}
+    </div>
+
+    <hr>
+    <div class="row">
+        <h4>Your Leave Balances</h4>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Leave Type</th>
+                    <th>Total Days</th>
+                    <th>Remaining Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for balance in leave_balances %}
+                    <tr>
+                        <td>{{ balance.leave_type.name }}</td>
+                        <td>{{ balance.leave_type.no_days }}</td>
+                        <td>{{ balance.balance }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
